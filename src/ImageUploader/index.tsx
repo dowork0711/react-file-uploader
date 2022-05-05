@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
 const SImageUploaderWrapper = styled.div`
@@ -65,17 +65,17 @@ const SLoading = styled.div`
     text-align: center;
 `;
 
-export default function ImageUploader() {
+export default function ImageUploader(): JSX.Element {
     const [imageFile, setImageFile] = useState<string | any>({
         imageFile: "",
         viewUrl: ""
     });
 
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState<boolean>(false);
 
     let imageRef: any;
 
-    const onChangeUploadHandler = (e: any) => {
+    const onChangeUploadHandler = (e: ChangeEvent<HTMLInputElement> | any): void => {
         console.log("사진 업로드 버튼 클릭");
         e.preventDefault();
 
@@ -96,7 +96,7 @@ export default function ImageUploader() {
         console.log(loaded);
     };
 
-    const onClickDeleteHandler = () => {
+    const onClickDeleteHandler = (): void => {
         console.log("사진 삭제 버튼 클릭");
         setImageFile({
             imageFile: "",
